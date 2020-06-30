@@ -2,18 +2,15 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-
-    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <!-- Popper JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </head>
+<style>
+    table,tr,td{border: solid 3px grey; padding: 2px;}
+</style>
 
 <body>
     <div class="jumbotron text-center ">
@@ -24,84 +21,27 @@
         <div class="row">
             <div class="col-sm-4"></div>
             <div class="col-sm-4" >
-
-                <p id="demo"></p>
-                
-                <script >
-                //var obj = { table: "customers", limit: 20 };
-                //var dbParam = JSON.stringify(obj);
-
-                var j,i, y="", x="";
-                var txt = {"arr":[
-                {
-                   "ID": "001",
-                   "Name": "Eurasian Collared-Dove",
-                   "Type": "Dove"
-                },
-                {
-                    "ID": "002",
-                    "Name": "Bald Eagle",
-                    "Type": "Hawk"
-                },
-                {
-                    "ID": "003",
-                    "Name": "Cooper's Hawk",
-                    "Type": "Hawk"
-                },
-                {
-                    "ID": "004",
-                    "Name": "Bell's Sparrow",
-                    "Type": "Sparrow"
-                },
-                {
-                    "ID": "005",
-                    "Name": "Mourning Dove",
-                    "Type": "Dove"
-                },
-                {
-                    "ID": "006",
-                    "Name": "Rock Pigeon",
-                    "Type": "Dove"
-                },
-                {
-                    "ID": "007",
-                    "Name": "Abert's Towhee",
-                    "Type": "Sparrow"
-                },
-                {
-                    "ID": "008",
-                    "Name": "Brewer's Sparrow",
-                    "Type": "Sparrow"
-                },
-                {
-                    "ID": "009",
-                    "Name": "Canyon Towhee",
-                    "Type": "Sparrow"
-                },
-                {
-                    "ID": "010",
-                    "Name": "Black Vulture",
-                    "Type": "Hawk"
-                }
-                ]}
-                /*for (i in txt.arr) {
-                  x += "<h2>" + txt.arr[i].Name + "</h2>";
-
-                }*/
-                y += "<table border='3' style='margin-left:auto; margin-right:auto;'>"
-                    for (j in txt.arr) {
-                      y += "<tr><td>" + txt.arr[j].ID + "</td>";
-
-                      y += "<td>" + txt.arr[j].Name + "</td>";
-                      y += "<td>" + txt.arr[j].Type + "</td></tr>";
-
-                    }
-                    y += "</table>"    
-                    document.getElementById("demo").innerHTML = y;
-                </script>
-                
+                <div ng-app="myApp" ng-controller="myController">
+                    <table style="margin-left:auto; margin-right:auto;"> 
+                        <tr ng-repeat="x in gb">
+                            <td><label>{{x.ID}}</label></td>                            
+                            <td><label>{{x.Name}}</label></td>
+                            <td><label>{{x.Type}}</label></td>
+                        </tr>
+                    </table>
+                </div>
             </div>
-            <div class="col-sm-4"></div>
         </div>
-    </div>
-    </body></html>
+    </div>    
+</body>
+                
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('myController', function ($scope) {
+
+        $scope.gb =
+        [{ "ID": "001",   "Name": "Eurasian Collared-Dove",   "Type": "Dove"},{    "ID": "002",    "Name": "Bald Eagle",    "Type": "Hawk"},{    "ID": "003",    "Name": "Cooper\'s Hawk",    "Type": "Hawk"},{    "ID": "004",    "Name": "Bell\'s Sparrow",    "Type": "Sparrow"},{    "ID": "005",    "Name": "Mourning Dove",    "Type": "Dove"},{    "ID": "006",    "Name": "Rock Pigeon",    "Type": "Dove"},{    "ID": "007",   "Name": "Abert\'s Towhee",    "Type": "Sparrow"},{    "ID": "008",    "Name": "Brewer\'s Sparrow",    "Type": "Sparrow"},{    "ID": "009",    "Name": "Canyon Towhee",    "Type": "Sparrow"},{    "ID": "010",    "Name": "Black Vulture",    "Type": "Hawk"}];
+
+    });
+</script>
+</html>     
